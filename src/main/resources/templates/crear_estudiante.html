@@ -34,39 +34,35 @@
       </div>
     </div>
   </nav>
-
+  <br>
   <div class="container">
     <div class="row">
-      <h1>Lista de Estudiantes</h1>
-    </div>
-    <div class="row">
-      <div class="col-lg-3">
-        <a th:href="@{/estudiantes/nuevo}" class="btn btn-primary btn-sm mb3">Agregar Estudiante</a>
+      <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+        <h1 class="text-center">Registro de estudiante</h1>
+        <div class="card-body">
+          <form th:action="@{/guardarEstudiante}" th:object="${estudiante}" method="post">
+            <div class="form-group">
+              <label>Nombre: </label>
+              <input type="text" name="nombre" th:field="*{nombre}" class="form-control" placeholder="Digite su nombre" required>
+            </div>
+            <br>
+            <div class="form-group">
+              <label>Apellido: </label>
+              <input type="text" name="apellido" th:field="*{apellido}" class="form-control" placeholder="Digite su apellido" required>
+            </div>
+            <br>
+            <div class="form-group">
+              <label>Nombre: </label>
+              <input type="email" name="email" th:field="*{email}" class="form-control" placeholder="Digite su email" required>
+            </div>
+            <br>
+            <div class="box-footer">
+              <button class="btn btn-success">Guardar</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-    <br>
-    <table class="table table-striped table-bordered">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="Nombre">Nombre</th>
-          <th scope="Apellido">Apellido</th>
-          <th scope="Email">Email</th>
-          <th scope="Acciones">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr th:each="estudiante : ${estudiantes}">
-          <td th:text="${estudiante.nombre}">Larry</td>
-          <td th:text="${estudiante.apellido}">the Bird</td>
-          <td th:text="${estudiante.email}">@twitter</td>
-          <td>
-            <a th:href="@{/estudiantes/editar/{id}(id=${estudiante.id})}" class="btn btn-info">Editar</a>
-            <a th:href="@{/estudiantes/{id}(id=${estudiante.id})}" class="btn btn-danger">Eliminar</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
   </div>
 
 

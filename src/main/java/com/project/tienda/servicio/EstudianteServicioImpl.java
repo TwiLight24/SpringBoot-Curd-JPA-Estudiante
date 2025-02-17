@@ -9,7 +9,7 @@ import com.project.tienda.entidad.Estudiante;
 import com.project.tienda.repositorio.EstudianteRepositorio;
 
 @Service
-public class EstudianteServicioImpl implements EstudianteServicio{
+public class EstudianteServicioImpl implements EstudianteServicio {
 
     @Autowired
     private EstudianteRepositorio repositorio;
@@ -18,5 +18,25 @@ public class EstudianteServicioImpl implements EstudianteServicio{
     public List<Estudiante> listarTodosLosEstudiantes() {
         return repositorio.findAll();
     }
-    
+
+    @Override
+    public Estudiante guardarEstudiante(Estudiante estudiante) {
+        return repositorio.save(estudiante);
+    }
+
+    @Override
+    public Estudiante obtenerEstudiantePorId(Long id) {
+        return repositorio.findById(id).get();
+    }
+
+    @Override
+    public Estudiante actualizarEstudiante(Estudiante estudiante) {
+        return repositorio.save(estudiante);
+    }
+
+    @Override
+    public void eliminarEstudiante(Long id) {
+        repositorio.deleteById(id);
+    }
+
 }
